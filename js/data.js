@@ -79,5 +79,5 @@ function generateDescription() {
   };
 }
 
-const publications = Array.from({length: PHOTOS_NUMBER}, () => generateDescription());
-export {publications};
+const generatePublications = Array.from({length: PHOTOS_NUMBER}, () => generatePublication());
+export {generatePublications};
