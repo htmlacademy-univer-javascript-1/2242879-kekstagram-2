@@ -70,6 +70,7 @@ function generateComment() {
 function generateDescription() {
   const comments = Array.from({length: getRandomPositiveInteger(0, 10)}, generateComment);
   const id = getId();
+
   return {
     id: id,
     url: `photos/${id}.jpg`,
