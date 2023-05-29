@@ -1,4 +1,4 @@
-import {getRandomInt,getRandomElement} from './util.js';
+import {getRandomPositiveInteger,getRandomElement} from './util.js';
 // Генерация данных
 const PHOTOS_COUNT = 25;
 const NAMES = ['Анастасия', 'Анна', 'Мария', 'Елена', 'Дарья', 'Алина', 'Полина', 'Виктория'];
@@ -47,34 +47,34 @@ const getId = (() => {
 })();
 
 function getCommentId() {
-  let id = getRandomInt(1, 300);
+  let id = getRandomPositiveInteger(1, 300);
   while (COMMENTS_ID.includes(id)) {
-    id = getRandomInt(1, 300);
+    id = getRandomPositiveInteger(1, 300);
   }
   return id;
 }
 
 function generateComment() {
   const messages = [];
-  for (let i = 0; i < getRandomInt(1, 2); i++) {
+  for (let i = 0; i < getRandomPositiveInteger(1, 2); i++) {
     messages.push(getRandomElement(MESSAGES));
   }
   return {
     id: getCommentId(),
-    avatar: `img/avatar-${getRandomInt(1, 6)}.svg`,
+    avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
     message: messages.join(' '),
     name: getRandomElement(NAMES)
   };
 }
 
 function generateDescription() {
-  const comments = Array.from({length: getRandomInt(0, 10)}, generateComment);
+  const comments = Array.from({length: getRandomPositiveInteger(0, 10)}, generateComment);
   const id = getId();
   return {
     id: id,
     url: `photos/${id}.jpg`,
     description: DESCRIPTIONS[id - 1],
-    likes: getRandomLikes(),
+    likes: getRandomPositiveInteger(15,200),
     comments: comments
   };
 }
